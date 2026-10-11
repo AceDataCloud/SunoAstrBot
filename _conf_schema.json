@@ -1,0 +1,9 @@
+{
+  "api_key": {
+    "description": "Ace Data Cloud generation API key with Suno access",
+    "type": "string",
+    "default": "",
+    "secret": true,
+    "hint": "Copy a service or General application key from platform.acedata.cloud. Do not include 'Bearer '."
+  }
+}

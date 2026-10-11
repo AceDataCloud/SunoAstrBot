@@ -1,0 +1,13 @@
+name: astrbot_plugin_suno_acedatacloud
+display_name: Suno by Ace Data Cloud
+short_desc: Generate Suno music and retrieve completed songs in AstrBot chat.
+desc: Generate Suno music through your Ace Data Cloud account, then query the same task ID for final audio links.
+version: 0.1.0
+author: acedatacloud
+repo: https://github.com/AceDataCloud/SunoAstrBot
+astrbot_version: ">=4.28.2,<5"
+tags:
+  - Suno
+  - AI music
+  - music generation
+  - Ace Data Cloud
