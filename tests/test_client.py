@@ -122,9 +122,11 @@ async def test_failed_task_never_exposes_preview_url():
 
 @pytest.mark.asyncio
 async def test_missing_task_id_does_not_repeat_generation():
-    with patch(
-        "client.OPENER.open", return_value=FakeResponse({"success": True})
-    ) as opening:
-        with pytest.raises(SunoError, match="No task ID"):
-            await SunoClient("test-key").submit("Piano")
+    with (
+        patch(
+            "client.OPENER.open", return_value=FakeResponse({"success": True})
+        ) as opening,
+        pytest.raises(SunoError, match="No task ID"),
+    ):
+        await SunoClient("test-key").submit("Piano")
     assert opening.call_count == 1

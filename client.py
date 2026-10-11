@@ -8,7 +8,6 @@ from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
-
 API_BASE = "https://api.acedata.cloud"
 MODELS = {"chirp-v6", "chirp-v6-mini", "chirp-v6-wild"}
 COMPLETE = {"complete", "completed", "succeeded", "success", "finished"}
@@ -32,7 +31,7 @@ class _NoRedirect(HTTPRedirectHandler):
         Returns:
             None so urllib raises instead of following the redirect.
         """
-        return None
+        return
 
 
 OPENER = build_opener(_NoRedirect)
