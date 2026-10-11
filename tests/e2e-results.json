@@ -1,0 +1,41 @@
+{
+  "environment": {
+    "astrbot_version": "4.28.2",
+    "installation": "isolated editable local plugin installation",
+    "chat_model": "gpt-4.1-mini through the generic OpenAI-compatible source",
+    "marketplace_installation": "not tested; AstrBot Cloud listing pending"
+  },
+  "chat_tools_registered": [
+    "suno_generate_music",
+    "suno_get_task"
+  ],
+  "primary_case": {
+    "prompt": "A short gentle instrumental piano melody for sunrise, no vocals.",
+    "model": "chirp-v6",
+    "instrumental": true,
+    "duration_target_seconds": 10,
+    "generation_tool_calls": 1,
+    "task_id": "0bb00b82-afe3-49b0-baee-c1299066b44f",
+    "terminal_trace_id": "913209ac-8913-4529-acbe-00b4afad796d",
+    "terminal_status": "succeeded",
+    "terminal_success": true,
+    "final_audio_count": 2,
+    "final_audio_host": "cdn.acedata2.cloud",
+    "media_probe": [
+      {"format": "mp3", "codec": "mp3", "duration_seconds": 18.024},
+      {"format": "mp3", "codec": "mp3", "duration_seconds": 18.024}
+    ],
+    "usage": {
+      "api_id": "09a26295-5972-4392-9318-dcd9b218f90d",
+      "status_code": 200,
+      "original_amount_credits": 0.56,
+      "deducted_amount_credits": 0.504,
+      "exact_trace_matches": 1
+    }
+  },
+  "limits": [
+    "The verified installation was local, not from the public AstrBot market.",
+    "Only the primary chirp-v6 generation and same-task retrieval were run through AstrBot chat.",
+    "Market search and installation require AstrBot Cloud publication."
+  ]
+}
