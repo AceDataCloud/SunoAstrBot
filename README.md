@@ -2,7 +2,7 @@
 
 Generate Suno music in an AstrBot conversation through your own Ace Data Cloud account. The plugin registers two agent tools: `suno_generate_music` submits one job, and `suno_get_task` retrieves that same job until it completes. A submitted job or a preview audio URL is not a finished song.
 
-[简体中文指南](readme/README_zh_Hans.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9) · [Current prices](https://platform.acedata.cloud/models)
+[简体中文指南](readme/README_zh_Hans.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_documents_4da95d9d_7722_4a72_857d_bf6be86036e9) · [Current prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_pricing)
 
 ## 1. Find and install
 
@@ -12,7 +12,9 @@ The AstrBot Cloud listing has not yet been published. Until it is available, use
 
 ## 2. Get a key with Suno access
 
-Sign in to [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications). Open **General application** to copy an existing key, or choose **Manage Keys → Create** for a separate AstrBot key. A service-specific key also works when it grants both `/suno/audios` and `/suno/tasks`. Check the current Suno price and your balance before generating.
+New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
+
+Sign in to [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_api_key). Open **General application** to copy an existing key, or choose **Manage Keys → Create** for a separate AstrBot key. A service-specific key also works when it grants both `/suno/audios` and `/suno/tasks`. Check the current Suno price and your balance before generating.
 
 Copy the key value only. Do not add `Bearer ` or use a `platform-...` management token. Do not put it in a chat message or repository file.
 

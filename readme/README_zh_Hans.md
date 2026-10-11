@@ -2,7 +2,7 @@
 
 通过自己的 Ace Data Cloud 账号，在 AstrBot 聊天中生成 Suno 音乐。插件提供 `suno_generate_music` 提交任务与 `suno_get_task` 查询同一任务两个 Agent 工具。提交成功或出现试听链接不代表歌曲已完成。
 
-[English guide](../README.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9) · [当前价格](https://platform.acedata.cloud/models)
+[English guide](../README.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_documents_4da95d9d_7722_4a72_857d_bf6be86036e9) · [当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_pricing)
 
 ## 1. 搜索与安装
 
@@ -12,7 +12,9 @@ AstrBot Cloud 尚未正式上架。上架前，源代码合并发布后可通过
 
 ## 2. 获取 Suno API Key
 
-登录 [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications)，打开 **General application** 复制现有 Key，或进入 **Manage Keys → Create** 创建 AstrBot 专用 Key。服务专用 Key 也可使用，但要同时允许 `/suno/audios` 与 `/suno/tasks`。生成前检查 Suno 当前价格与余额。
+首次使用请先注册并登录；如果应用页还没有通用应用，点击 **初始化通用应用（Initialize General Application）**，再按下面步骤管理密钥。
+
+登录 [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_api_key)，打开 **General application** 复制现有 Key，或进入 **Manage Keys → Create** 创建 AstrBot 专用 Key。服务专用 Key 也可使用，但要同时允许 `/suno/audios` 与 `/suno/tasks`。生成前检查 Suno 当前价格与余额。
 
 只复制 Key 本身，不加 `Bearer `，也不要使用 `platform-...` 管理 Token。不要把 Key 写进聊天消息或仓库文件。
 
