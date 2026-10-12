@@ -8,7 +8,7 @@
 
 在 AstrBot WebUI 中打开 **Extensions → Plugins → AstrBot Plugin Market**，搜索 **Suno**。核对卡片名称 **Suno by Ace Data Cloud**、作者 **acedatacloud** 和 Suno 服务图标，然后打开详情并点击 **Install**。回到 **Installed**，确认插件已启用且没有加载错误。
 
-AstrBot Cloud 尚未正式上架。上架前，源代码合并发布后可通过 **Installed → Install (+) → Install from URL** 填入 `https://github.com/AceDataCloud/SunoAstrBot` 预览。URL 安装不能算作市场搜索或市场安装通过。
+插件已在 [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud) 正式上架，推荐按上面的市场流程安装。也可通过 **Installed → Install (+) → Install from URL** 填入 `https://github.com/AceDataCloud/SunoAstrBot` 安装源码仓库；仓库安装是独立路径，不能代替市场安装验证。
 
 ## 2. 获取 Suno API Key
 
@@ -57,7 +57,11 @@ AstrBot Cloud 尚未正式上架。上架前，源代码合并发布后可通过
 
 ## 已验证的本地运行
 
-在隔离的 AstrBot `v4.28.2` 实例中，两个工具均注册成功。ChatUI 会话实际调用工具，只提交一次 `chirp-v6` 生成，并用同一 task ID 查询到 `succeeded`。两个最终 MP3 均解码为 18.024 秒音频。对应的一条 Suno API 用量记录显示原价 0.56 Credits、账户折扣后扣款 0.504 Credits。[脱敏证据](../tests/e2e-results.json)包含 task 与 trace ID。这证明本地运行，官方市场搜索和安装仍待完成。
+在隔离的 AstrBot `v4.28.2` 实例中，两个工具均注册成功。ChatUI 会话实际调用工具，只提交一次 `chirp-v6` 生成，并用同一 task ID 查询到 `succeeded`。两个最终 MP3 均解码为 18.024 秒音频。对应的一条 Suno API 用量记录显示原价 0.56 Credits、账户折扣后扣款 0.504 Credits。[脱敏证据](../tests/e2e-results.json)包含 task 与 trace ID。
+
+## 已验证的市场安装
+
+2026-10-12，[Cloud 公开卡片](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud)显示版本 `0.1.0`。独立的全新 AstrBot `v4.28.2` 实例通过官方市场安装，读回 `install_method: market` 与 `activated: true`。ChatUI 仅调用一次 `suno_get_task` 查询已有成功任务，返回两个最终音频链接，没有再次生成。[脱敏市场证据](https://github.com/AceDataCloud/Index/blob/main/plans/ecosystem-growth/agent-provider-onboarding/execution/evidence/astrbot-market-20261012.json)记录安装与调用。
 
 ## 品牌素材
 
