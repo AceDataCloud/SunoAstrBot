@@ -8,7 +8,7 @@ Generate Suno music in an AstrBot conversation through your own Ace Data Cloud a
 
 In AstrBot WebUI, open **Extensions → Plugins → AstrBot Plugin Market** and search **Suno**. Check the card says **Suno by Ace Data Cloud**, the author is **acedatacloud**, and the logo matches the Suno service icon. Open the details and select **Install**. Once installed, find it under **Installed** and confirm that it is enabled without a load error.
 
-The AstrBot Cloud listing has not yet been published. Until it is available, use **Installed → Install (+) → Install from URL** with `https://github.com/AceDataCloud/SunoAstrBot` after the source release is merged. A URL installation is a preview and does not prove that market search or installation works.
+The plugin is published in [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud). Prefer the market installation above. **Installed → Install (+) → Install from URL** with `https://github.com/AceDataCloud/SunoAstrBot` is also available; a repository installation is a separate path and does not validate market installation.
 
 ## 2. Get a key with Suno access
 
@@ -57,7 +57,11 @@ The plugin sends the key only to `https://api.acedata.cloud`, makes no automatic
 
 ## Verified local run
 
-On AstrBot `v4.28.2`, an isolated editable installation registered both tools. A ChatUI conversation invoked each tool, submitted one `chirp-v6` generation, and retrieved the same task to `succeeded`. Two final MP3 files decoded as 18.024-second audio. One matching Suno API usage row reported 0.56 Credits before the account discount and 0.504 Credits deducted. The [sanitized evidence](tests/e2e-results.json) records the task and trace IDs. This validates the local runtime; official market discovery and installation remain open.
+On AstrBot `v4.28.2`, an isolated editable installation registered both tools. A ChatUI conversation invoked each tool, submitted one `chirp-v6` generation, and retrieved the same task to `succeeded`. Two final MP3 files decoded as 18.024-second audio. One matching Suno API usage row reported 0.56 Credits before the account discount and 0.504 Credits deducted. The [sanitized evidence](tests/e2e-results.json) records the task and trace IDs.
+
+## Verified market installation
+
+On 2026-10-12, the public [Cloud listing](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud) reported version `0.1.0`. A separate clean AstrBot `v4.28.2` instance installed the package through the official market and read back `install_method: market` and `activated: true`. ChatUI called `suno_get_task` once on the existing completed task and returned two final audio URLs, without another generation. [Sanitized market evidence](https://github.com/AceDataCloud/Index/blob/main/plans/ecosystem-growth/agent-provider-onboarding/execution/evidence/astrbot-market-20261012.json) records the installation and call.
 
 ## Brand asset
 
