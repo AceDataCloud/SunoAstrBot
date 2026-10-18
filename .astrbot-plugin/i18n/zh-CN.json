@@ -1,0 +1,13 @@
+{
+  "metadata": {
+    "display_name": "Suno（Ace Data Cloud 集成）",
+    "short_desc": "通过 Ace Data Cloud 生成 Suno 音乐并查询同一任务。",
+    "desc": "通过 Ace Data Cloud 生成 Suno 音乐并查询同一任务。 使用自己的 Ace API Key。/suno_ace 查看配置；管理员 /suno_ace_task 只查询已有任务。非服务厂商官方插件。"
+  },
+  "config": {
+    "api_key": {
+      "description": "Ace Data Cloud API Key（Suno）",
+      "hint": "在 Ace Applications → General application → Manage Keys 复制或创建专用 Key。允许 /suno/audios、/suno/tasks；不加 Bearer，不在聊天输入。界面遮罩不加密磁盘配置。"
+    }
+  }
+}

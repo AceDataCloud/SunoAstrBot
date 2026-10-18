@@ -2,27 +2,60 @@
 
 通过自己的 Ace Data Cloud 账号，在 AstrBot 聊天中生成 Suno 音乐。插件提供 `suno_generate_music` 提交任务与 `suno_get_task` 查询同一任务两个 Agent 工具。提交成功或出现试听链接不代表歌曲已完成。
 
+**本 PR 的目标版本为 0.1.1**：新增原生帮助及管理员查询指令、双语配置和图文说明。合并和市场发布前，当前 0.1.0 安装不会自动获得这些入口。
+
+这是 **Ace Data Cloud 提供的 Suno 独立集成**，不是 Suno 厂商或 AstrBot 团队的官方插件。使用自己的 Ace 账号和 API Key；不要填写其他平台的密钥。
+
 [English guide](../README.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_documents_4da95d9d_7722_4a72_857d_bf6be86036e9) · [当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_pricing)
 
 ## 1. 搜索与安装
 
-在 AstrBot WebUI 中打开 **Extensions → Plugins → AstrBot Plugin Market**，搜索 **Suno**。核对卡片名称 **Suno by Ace Data Cloud**、作者 **acedatacloud** 和 Suno 服务图标，然后打开详情并点击 **Install**。回到 **Installed**，确认插件已启用且没有加载错误。
+当前上游文档（2026-10-18）：侧栏 **插件 → 顶部插件 → 插件市场 / 已安装**；旧 4.28.2 英文界面可能显示 Extensions。插件参数在已安装卡片齿轮里设置，**不要把服务插件 Key 填进模型提供商**。
 
-插件已在 [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud) 正式上架，推荐按上面的市场流程安装。也可通过 **Installed → Install (+) → Install from URL** 填入 `https://github.com/AceDataCloud/SunoAstrBot` 安装源码仓库；仓库安装是独立路径，不能代替市场安装验证。
+在 AstrBot WebUI 中打开 **Plugins → Plugins → Plugin Market**，搜索 **Suno**。核对卡片名称 **Suno by Ace Data Cloud**、作者 **acedatacloud** 和 Suno 服务图标，然后打开详情并点击 **Install**。回到 **Installed**，确认插件已启用且没有加载错误。
+
+插件已在 [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud) 正式上架，推荐按上面的市场流程安装。也可通过 **Plugins → Plugins → Installed → Install Plugin (+) → Install from URL** 填入 `https://github.com/AceDataCloud/SunoAstrBot` 安装源码仓库；仓库安装是独立路径，不能代替市场安装验证。
 
 ## 2. 获取 Suno API Key
 
-首次使用请先注册并登录；如果应用页还没有通用应用，点击 **初始化通用应用（Initialize General Application）**，再按下面步骤管理密钥。
+先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_signup)；首次没有通用应用时，先初始化 **General application**。下图取自同一 Ace 应用管理页面，不是 AstrBot 界面。
 
 登录 [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_api_key)，打开 **General application** 复制现有 Key，或进入 **Manage Keys → Create** 创建 AstrBot 专用 Key。服务专用 Key 也可使用，但要同时允许 `/suno/audios` 与 `/suno/tasks`。生成前检查 Suno 当前价格与余额。
 
 只复制 Key 本身，不加 `Bearer `，也不要使用 `platform-...` 管理 Token。不要把 Key 写进聊天消息或仓库文件。
 
+1. 打开 **General application**，用图中 **1** 复制现有 Key，或点 **2 Manage Keys → Create** 创建专用 Key。
+
+![复制 Ace Key 或管理专用 Key（已脱敏）](../_assets/tutorial/get-api-key-en.png)
+
+2. 可把名称设为 `AstrBot Suno`，按需要设置到期/限额；Allowed APIs 同时包含 `/suno/audios` 和 `/suno/tasks`。截图的 Dify tutorial 只是旧示例名称。
+
+![创建专用 Key（共享 Ace 页面，非 AstrBot）](../_assets/tutorial/create-api-key-en.png)
+
+图片于 2026-10-18 复用核验，原始拍摄日期未提供；凭据与余额已脱敏。 [来源和版本边界](../_assets/tutorial/sources.json)。
+
+### 在 AstrBot 粘贴的位置
+
+打开 **插件 → 插件 → 已安装**，点击 **Suno by Ace Data Cloud** 卡片齿轮，把 Key 填入 **Ace Data Cloud generation API key with Suno access**（保存字段为 `api_key`）并保存。不要填 `Bearer `；也不要在聊天里输入 Key。
+
+![AstrBot 官方历史插件配置参考，非本插件运行截图](../_assets/tutorial/astrbot-plugin-config-reference.png)
+
+此图是 AstrBot 官方 `helloworld` 配置示例，界面标签 v3.4.14（构建 v3.4.9），不是 Ace 配置或运行证明。上方说明给出了本插件的准确字段和当前菜单；新版本布局可能不同。
+
 ## 3. 配置 AstrBot
 
-在 **Extensions → Plugins → Installed** 中点击 **Suno by Ace Data Cloud** 的齿轮，将 Key 填入 **Ace Data Cloud generation API key with Suno access** 并保存。AstrBot WebUI 会遮蔽输入，但插件配置文件仍存储原值，应保护 AstrBot 数据目录。
+在 **Plugins → Plugins → Installed** 中点击 **Suno by Ace Data Cloud** 的齿轮，将 Key 填入 **Ace Data Cloud generation API key with Suno access** 并保存。AstrBot WebUI 会遮蔽输入，但插件配置文件仍存储原值，应保护 AstrBot 数据目录。
 
-选择支持工具调用的聊天模型，并在当前会话的 Profile 和 Persona 中允许 `suno_generate_music` 与 `suno_get_task`。工具未出现时查看 **Extensions → Handlers**。
+使用 Agent 工具时，使用 Agent 工具时，选择支持工具调用的聊天模型，并在当前会话的 Profile 和 Persona 中允许 `suno_generate_music` 与 `suno_get_task`。工具未出现时查看 **Plugins → Manage Behaviors → Function Tools**。
+
+## 无需聊天模型的原生指令
+
+| 输入 | 作用 |
+| --- | --- |
+| `/suno_ace` | 显示本服务、Token 配置和查询用法，不请求外部 API。 |
+| `/suno_ace_task <task_id>` | 仅 AstrBot 管理员：查询一个已有任务，返回状态与最终媒体，不调用 LLM 或生成。 |
+
+指令采用默认 `/` 前缀；自定义唤醒前缀时相应替换。管理员身份由 AstrBot 判断；同一实例的插件 Key 是共享配置，因此查询指令默认限管理员。其他用户继续使用受当前人格/配置允许的 Agent 工具。`pending` 时稍后只查同一编号，`failed` 时按原 task/trace 排查。
 
 ## 4. 在聊天中只提交一次
 

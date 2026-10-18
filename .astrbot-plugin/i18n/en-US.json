@@ -1,0 +1,13 @@
+{
+  "metadata": {
+    "display_name": "Suno by Ace Data Cloud",
+    "short_desc": "Suno music generation and same-task audio retrieval through Ace Data Cloud.",
+    "desc": "Suno music generation and same-task audio retrieval through Ace Data Cloud. Configure your own Ace API key. /suno_ace shows help; administrators use /suno_ace_task for an existing task. This integration is provided by Ace Data Cloud."
+  },
+  "config": {
+    "api_key": {
+      "description": "Ace Data Cloud API Key for Suno",
+      "hint": "Copy/create a dedicated key in Ace Applications → General application → Manage Keys. Allow /suno/audios and /suno/tasks. No Bearer prefix; never paste into chat. Masking does not encrypt the data directory."
+    }
+  }
+}

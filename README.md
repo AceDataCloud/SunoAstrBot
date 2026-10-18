@@ -2,27 +2,60 @@
 
 Generate Suno music in an AstrBot conversation through your own Ace Data Cloud account. The plugin registers two agent tools: `suno_generate_music` submits one job, and `suno_get_task` retrieves that same job until it completes. A submitted job or a preview audio URL is not a finished song.
 
+**This PR targets 0.1.1** with native help/admin lookup commands, bilingual configuration and illustrated setup. Existing 0.1.0 installations do not gain these entries until the source is merged and the package is published/updated.
+
+This independent **Suno integration is provided by Ace Data Cloud**. It is not an official plugin from the Suno publisher or the AstrBot team. Use your own Ace account and API key.
+
 [简体中文指南](readme/README_zh_Hans.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_documents_4da95d9d_7722_4a72_857d_bf6be86036e9) · [Current prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_pricing)
 
 ## 1. Find and install
 
-In AstrBot WebUI, open **Extensions → Plugins → AstrBot Plugin Market** and search **Suno**. Check the card says **Suno by Ace Data Cloud**, the author is **acedatacloud**, and the logo matches the Suno service icon. Open the details and select **Install**. Once installed, find it under **Installed** and confirm that it is enabled without a load error.
+Current upstream navigation (2026-10-18): **Plugins → Plugins → Plugin Market / Installed**. The earlier tested 4.28.2 English UI may label the section Extensions. Configure this service in the installed plugin gear; **do not paste its key into model-provider settings**.
 
-The plugin is published in [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud). Prefer the market installation above. **Installed → Install (+) → Install from URL** with `https://github.com/AceDataCloud/SunoAstrBot` is also available; a repository installation is a separate path and does not validate market installation.
+In AstrBot WebUI, open **Plugins → Plugins → Plugin Market** and search **Suno**. Check the card says **Suno by Ace Data Cloud**, the author is **acedatacloud**, and the logo matches the Suno service icon. Open the details and select **Install**. Once installed, find it under **Installed** and confirm that it is enabled without a load error.
+
+The plugin is published in [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud). Prefer the market installation above. **Plugins → Plugins → Installed → Install Plugin (+) → Install from URL** with `https://github.com/AceDataCloud/SunoAstrBot` is also available; a repository installation is a separate path and does not validate market installation.
 
 ## 2. Get a key with Suno access
 
-New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
+[Register or sign in to Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_signup) first. Initialize **General application** if it does not exist. The following images show the shared Ace Applications page, not AstrBot.
 
 Sign in to [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_api_key). Open **General application** to copy an existing key, or choose **Manage Keys → Create** for a separate AstrBot key. A service-specific key also works when it grants both `/suno/audios` and `/suno/tasks`. Check the current Suno price and your balance before generating.
 
 Copy the key value only. Do not add `Bearer ` or use a `platform-...` management token. Do not put it in a chat message or repository file.
 
+1. Open **General application**. Use **1** to copy the existing key, or **2 Manage Keys → Create** for a dedicated key.
+
+![Copy an Ace key or open Manage Keys (redacted)](_assets/tutorial/get-api-key-en.png)
+
+2. Use a name such as `AstrBot Suno`. Set expiry/limits as needed and allow both `/suno/audios` and `/suno/tasks`. The screenshot’s Dify tutorial name is an older example.
+
+![Create an optional dedicated key (shared Ace page, not AstrBot)](_assets/tutorial/create-api-key-en.png)
+
+Images reused and checked on 2026-10-18; original capture dates were not supplied. Credentials and balance are redacted. [Sources and version limits](_assets/tutorial/sources.json).
+
+### Where to paste it in AstrBot
+
+Open **Plugins → Plugins → Installed**, select the gear on **Suno by Ace Data Cloud**, paste the key into **Ace Data Cloud generation API key with Suno access** (stored as `api_key`), and save. No `Bearer ` prefix; never paste the key in chat.
+
+![AstrBot official historical plugin configuration reference, not this plugin running](_assets/tutorial/astrbot-plugin-config-reference.png)
+
+This is the official AstrBot `helloworld` configuration example, labelled v3.4.14 (build v3.4.9), not an Ace setup or run. The instructions above identify this plugin’s exact field and current navigation; later UI layouts may differ.
+
 ## 3. Configure AstrBot
 
-Under **Extensions → Plugins → Installed**, select the gear icon on **Suno by Ace Data Cloud**. Paste the key into **Ace Data Cloud generation API key with Suno access** and save. AstrBot masks the field in WebUI, but its plugin configuration file stores the original value, so protect the AstrBot data directory.
+Under **Plugins → Plugins → Installed**, select the gear icon on **Suno by Ace Data Cloud**. Paste the key into **Ace Data Cloud generation API key with Suno access** and save. AstrBot masks the field in WebUI, but its plugin configuration file stores the original value, so protect the AstrBot data directory.
 
-Choose an active chat model that supports tool calling. In the current conversation's profile and persona, allow `suno_generate_music` and `suno_get_task`; see **Extensions → Handlers** if a tool is not available.
+For Agent-tool use, choose an active chat model that supports tool calling. In the current conversation's profile and persona, allow `suno_generate_music` and `suno_get_task`; see **Plugins → Manage Behaviors → Function Tools** if a tool is not available.
+
+## Native commands without a chat model
+
+| Input | Result |
+| --- | --- |
+| `/suno_ace` | Show service, Token setup and lookup help; no external API call. |
+| `/suno_ace_task <task_id>` | AstrBot administrators only: retrieve one existing task, with status/final media; no LLM or generation. |
+
+Commands use the default `/` prefix; adapt it if your instance uses another wake prefix. AstrBot enforces administrator identity. The instance shares this plugin key, so direct lookup is administrator-only; other users use Agent tools allowed by their profile/persona. For `pending`, query the same ID later; for `failed`, inspect the original task/trace.
 
 ## 4. Generate once in chat
 
