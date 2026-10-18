@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import importlib.util
 import json
 import sys
@@ -125,3 +126,20 @@ async def test_task_error_keeps_id_without_retry_or_generation(loaded, monkeypat
     query.assert_awaited_once_with("original-task")
     submit.assert_not_called()
     assert "configured-secret-never-echo" not in responses[0]
+
+
+@pytest.mark.asyncio
+async def test_native_task_cancellation_propagates_without_resubmission(
+    loaded, monkeypatch
+):
+    plugin, client, _ = loaded
+    query = AsyncMock(side_effect=asyncio.CancelledError)
+    submit = AsyncMock(
+        side_effect=AssertionError("Cancelled waiting must not generate")
+    )
+    monkeypatch.setattr(client, "query", query)
+    monkeypatch.setattr(client, "submit", submit)
+    with pytest.raises(asyncio.CancelledError):
+        _ = [x async for x in plugin.suno_ace_task(Event(), "original-task")]
+    query.assert_awaited_once_with("original-task")
+    submit.assert_not_called()

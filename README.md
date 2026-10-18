@@ -75,6 +75,10 @@ If it returns `pending`, wait and query the **same ID** again. Preview audio may
 
 ## 6. Check billing and solve common failures
 
+### Cancelled tasks and interrupted waiting
+
+An explicit failed/cancelled/rejected task is terminal: the plugin returns `status: failed`, `success: false` and no media, even if `finished_at` is still empty. It does not resubmit. Cancelling a local chat/command stops waiting locally; it does **not** cancel an upstream generation, and an already-started HTTP request may still finish. Inspect the original task/history and keep the same ID; there is no upstream-cancel command in this plugin.
+
 Open your Ace Data Cloud application usage or billing history and match the task or trace ID. A successful music generation should have its own usage record; task queries retrieve the existing job. Check the current price on the service page rather than assuming a fixed credit or USD amount.
 
 | Symptom | Check |
@@ -99,3 +103,21 @@ On 2026-10-12, the public [Cloud listing](https://cloud.astrbot.app/plugin/AceDa
 ## Brand asset
 
 `logo.png` is a PNG encoding of the current [Suno service icon](https://cdn.acedata.cloud/l3ffw7.jpg), not a redrawn logo. The source JPEG is SHA-256 `d2ccb1c0039519a68913ad447114f8f9ecca161ffc2105cd61c414e06f8747d9`; the packaged PNG is SHA-256 `60794402c519a7d34bb50158d4442d0fbba814e3754a981bb5649468a1c8afc0`.
+
+## Reproduce the no-cost host check
+
+From this repository in an isolated Python 3.12 environment:
+
+```bash
+uv venv --python 3.12 .venv-host
+uv pip install --python .venv-host/bin/python astrbot==4.29.0
+.venv-host/bin/python scripts/verify_host.py
+```
+
+The check needs no API Key and starts no server. It imports real AstrBot
+decorators, registers both commands/two tools, checks admin/non-admin access,
+masked-key schema, missing-Key handling and cancellation propagation with
+socket access blocked. Fake events and mocked cancellation do not establish
+a full message-dispatcher, market install, live generation, task ownership,
+new billing or signup/conversion result. Use normal `python -m pytest -q`
+for transport and command regression tests.

@@ -75,6 +75,10 @@
 
 ## 6. 核对账单与排障
 
+### 任务取消与本地中断
+
+任务明确 failed/cancelled/rejected 时视为终态：即使 `finished_at` 尚未填入，也返回 `status: failed`、`success: false`，不显示媒体、不重新提交。本地取消聊天或指令只中断等待，**不会取消服务端生成**，已开始的 HTTP 请求仍可能完成。保留原 task ID 并查请求历史；本插件没有服务端取消任务指令。
+
 在 Ace Data Cloud 的应用用量或账单记录中按 task/trace ID 核对。成功的音乐生成有自己的用量记录；任务查询读取已有结果。按服务页面的实时价格判断，不套用固定 Credits 或美元金额。
 
 | 现象 | 检查项 |
@@ -99,3 +103,18 @@
 ## 品牌素材
 
 `logo.png` 是当前 [Suno 服务图标](https://cdn.acedata.cloud/l3ffw7.jpg) 的 PNG 编码，并非重新绘制。源 JPEG SHA-256：`d2ccb1c0039519a68913ad447114f8f9ecca161ffc2105cd61c414e06f8747d9`；打包 PNG SHA-256：`60794402c519a7d34bb50158d4442d0fbba814e3754a981bb5649468a1c8afc0`。
+
+## 复现免费宿主检查
+
+在本仓库中使用独立 Python 3.12 环境：
+
+```bash
+uv venv --python 3.12 .venv-host
+uv pip install --python .venv-host/bin/python astrbot==4.29.0
+.venv-host/bin/python scripts/verify_host.py
+```
+
+无需 API Key，不启动服务。检查导入真实 AstrBot 装饰器、注册两个指令/两个工具，
+验证管理员允许/非管理员拒绝、Key 遮罩 schema、空 Key 错误与取消传播，并阻止 socket 连接。
+事件和取消为测试替身，不能据此声称完整消息分发、官方市场安装、真实生成、任务归属、
+新账单或注册转化已验。传输和指令回归使用常规 `python -m pytest -q`。
