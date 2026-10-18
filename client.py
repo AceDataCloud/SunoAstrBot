@@ -84,7 +84,7 @@ class SunoClient:
                 "Authorization": "Bearer " + self._api_key,
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "User-Agent": "AceDataCloudAstrBot/0.1.0",
+                "User-Agent": "AceDataCloudAstrBot/0.1.1",
             },
             method="POST",
         )
@@ -211,10 +211,10 @@ class SunoClient:
             "task_id": task_id,
             "trace_id": str(response.get("trace_id") or body.get("trace_id") or ""),
         }
-        if unfinished or (not state and not body.get("finished_at")):
-            return {**result, "status": "pending", "success": False, "audio_urls": []}
         if failed:
             return {**result, "status": "failed", "success": False, "audio_urls": []}
+        if unfinished or (not state and not body.get("finished_at")):
+            return {**result, "status": "pending", "success": False, "audio_urls": []}
         if state not in COMPLETE and not body.get("finished_at"):
             return {**result, "status": "pending", "success": False, "audio_urls": []}
         urls: list[str] = []

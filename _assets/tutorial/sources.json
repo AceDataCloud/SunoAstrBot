@@ -1,0 +1,27 @@
+{
+  "verified_on": "2026-10-18",
+  "images": [
+    {
+      "file": "get-api-key-en.png",
+      "type": "redacted Ace screenshot",
+      "source_url": "https://raw.githubusercontent.com/AceDataCloud/SunoDify/8d3d03570e73324220f111f7fe343da0792a8071/_assets/tutorial/get-api-key-en.png",
+      "official_page_url": "https://github.com/AceDataCloud/SunoDify/blob/8d3d03570e73324220f111f7fe343da0792a8071/README.md",
+      "limits": "Shared Ace Applications UI reference; credentials and balance redacted; original capture date not supplied."
+    },
+    {
+      "file": "create-api-key-en.png",
+      "type": "redacted Ace screenshot",
+      "source_url": "https://raw.githubusercontent.com/AceDataCloud/SunoDify/8d3d03570e73324220f111f7fe343da0792a8071/_assets/tutorial/create-api-key-en.png",
+      "official_page_url": "https://github.com/AceDataCloud/SunoDify/blob/8d3d03570e73324220f111f7fe343da0792a8071/README.md",
+      "limits": "Original example name says Dify tutorial; use an AstrBot-specific name. Not an AstrBot screenshot; original capture date not supplied."
+    },
+    {
+      "file": "astrbot-plugin-config-reference.png",
+      "type": "official historical product screenshot",
+      "source_url": "https://files.astrbot.app/docs/source/images/plugin/QQ_1738149538737.png",
+      "official_page_url": "https://github.com/AstrBotDevs/AstrBot/blob/dffe922773725e9c178392c423676ad65044748c/docs/zh/dev/star/plugin.md#插件配置",
+      "limits": "Official helloworld configuration screenshot, version labels v3.4.14/build v3.4.9. Shows where plugin-owned fields appear, not this service or an Ace run. Current documented path is Plugins → Plugins → Installed → gear. Original capture date not supplied."
+    }
+  ],
+  "rights": "Ace screenshots reused from the Ace-owned SunoDify guide. AstrBot reference image attributed to upstream official documentation; preserve upstream license notice in THIRD_PARTY_NOTICES.md."
+}
