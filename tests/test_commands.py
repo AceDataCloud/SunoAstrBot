@@ -85,7 +85,7 @@ async def test_help_is_local_and_never_echoes_key(loaded, monkeypatch):
     assert "configured-secret-never-echo" not in responses[0]
     assert (
         "https://platform.acedata.cloud/console/applications"
-        "?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen\n"
+        "?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen\n"
         in responses[0]
     )
     query.assert_not_called()
