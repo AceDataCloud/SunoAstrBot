@@ -6,7 +6,7 @@ Generate Suno music in an AstrBot conversation through your own Ace Data Cloud a
 
 This independent **Suno integration is provided by Ace Data Cloud**. It is not an official plugin from the Suno publisher or the AstrBot team. Use your own Ace account and API key.
 
-[简体中文指南](readme/README_zh_Hans.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_documents_4da95d9d_7722_4a72_857d_bf6be86036e9) · [Current prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_pricing)
+[简体中文指南](readme/README_zh_Hans.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [Current prices](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)
 
 ## 1. Find and install
 
@@ -18,9 +18,9 @@ The plugin is published in [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceD
 
 ## 2. Get a key with Suno access
 
-[Register or sign in to Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_signup) first. Initialize **General application** if it does not exist. The following images show the shared Ace Applications page, not AstrBot.
+[Register or sign in to Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) first. Initialize **General application** if it does not exist. The following images show the shared Ace Applications page, not AstrBot.
 
-Sign in to [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_api_key). Open **General application** to copy an existing key, or choose **Manage Keys → Create** for a separate AstrBot key. A service-specific key also works when it grants both `/suno/audios` and `/suno/tasks`. Check the current Suno price and your balance before generating.
+Sign in to [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen). Open **General application** to copy an existing key, or choose **Manage Keys → Create** for a separate AstrBot key. A service-specific key also works when it grants both `/suno/audios` and `/suno/tasks`. Check the current Suno price and your balance before generating.
 
 Copy the key value only. Do not add `Bearer ` or use a `platform-...` management token. Do not put it in a chat message or repository file.
 

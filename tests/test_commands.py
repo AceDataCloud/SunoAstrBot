@@ -83,7 +83,11 @@ async def test_help_is_local_and_never_echoes_key(loaded, monkeypatch):
     assert "Suno by Ace Data Cloud" in responses[0]
     assert "/suno_ace_task <task_id>" in responses[0]
     assert "configured-secret-never-echo" not in responses[0]
-    assert "utm_content=sunoastrbot_command_help" in responses[0]
+    assert (
+        "https://platform.acedata.cloud/console/applications"
+        "?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen\n"
+        in responses[0]
+    )
     query.assert_not_called()
     submit.assert_not_called()
 

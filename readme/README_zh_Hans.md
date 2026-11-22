@@ -6,7 +6,7 @@
 
 这是 **Ace Data Cloud 提供的 Suno 独立集成**，不是 Suno 厂商或 AstrBot 团队的官方插件。使用自己的 Ace 账号和 API Key；不要填写其他平台的密钥。
 
-[English guide](../README.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_documents_4da95d9d_7722_4a72_857d_bf6be86036e9) · [当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_pricing)
+[English guide](../README.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)
 
 ## 1. 搜索与安装
 
@@ -18,9 +18,9 @@
 
 ## 2. 获取 Suno API Key
 
-先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_signup)；首次没有通用应用时，先初始化 **General application**。下图取自同一 Ace 应用管理页面，不是 AstrBot 界面。
+先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)；首次没有通用应用时，先初始化 **General application**。下图取自同一 Ace 应用管理页面，不是 AstrBot 界面。
 
-登录 [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunoastrbot_readme_api_key)，打开 **General application** 复制现有 Key，或进入 **Manage Keys → Create** 创建 AstrBot 专用 Key。服务专用 Key 也可使用，但要同时允许 `/suno/audios` 与 `/suno/tasks`。生成前检查 Suno 当前价格与余额。
+登录 [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)，打开 **General application** 复制现有 Key，或进入 **Manage Keys → Create** 创建 AstrBot 专用 Key。服务专用 Key 也可使用，但要同时允许 `/suno/audios` 与 `/suno/tasks`。生成前检查 Suno 当前价格与余额。
 
 只复制 Key 本身，不加 `Bearer `，也不要使用 `platform-...` 管理 Token。不要把 Key 写进聊天消息或仓库文件。
 
