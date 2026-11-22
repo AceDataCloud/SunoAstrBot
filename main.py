@@ -72,7 +72,7 @@ class SunoPlugin(Star):
     async def suno_ace_help(self, event: AstrMessageEvent):
         """Show Suno setup and existing-task help without an API call."""
         yield event.plain_result(
-            "Suno by Ace Data Cloud / Ace Data Cloud 提供的 Suno 集成\nSetup / 配置：Plugins → Plugins → Installed → plugin gear / 插件 → 插件 → 已安装 → 齿轮。\nRegister/sign in / 注册登录：https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen\nGeneral application → Manage Keys → Create；首次先初始化通用应用。\nAllow APIs / 允许接口：/suno/audios + /suno/tasks。检查当前权限、余额和价格。\nPaste the API Key in plugin settings only, never in chat. / 只在插件设置填 Key，不在聊天发送密钥。\nAdmin existing-task lookup / 管理员查已有任务：/suno_ace_task <task_id>\nAgent lookup tool / Agent 查询工具：suno_get_task；生成只调用一次，pending 时继续查同一 ID。\nGuide / 指南：https://github.com/AceDataCloud/SunoAstrBot#readme"
+            "Suno by Ace Data Cloud / Ace Data Cloud 提供的 Suno 集成\nSetup / 配置：Plugins → Plugins → Installed → plugin gear / 插件 → 插件 → 已安装 → 齿轮。\nRegister/sign in / 注册登录：https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen\nGeneral application → Manage Keys → Create；首次先初始化通用应用。\nAllow APIs / 允许接口：/suno/audios + /suno/tasks。检查当前权限、余额和价格。\nPaste the API Key in plugin settings only, never in chat. / 只在插件设置填 Key，不在聊天发送密钥。\nAdmin existing-task lookup / 管理员查已有任务：/suno_ace_task <task_id>\nAgent lookup tool / Agent 查询工具：suno_get_task；生成只调用一次，pending 时继续查同一 ID。\nGuide / 指南：https://github.com/AceDataCloud/SunoAstrBot#readme"
         )
 
     @filter.permission_type(filter.PermissionType.ADMIN)
