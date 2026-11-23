@@ -4,7 +4,7 @@
 
 Generate Suno music in an AstrBot conversation through your own Ace Data Cloud account. The plugin registers two agent tools: `suno_generate_music` submits one job, and `suno_get_task` retrieves that same job until it completes. A submitted job or a preview audio URL is not a finished song.
 
-**Version 0.1.2** accepts all 10 model IDs in the public Suno generation contract. The existing generation tool, same-task lookup, native help/admin commands and configuration remain unchanged. Update the plugin to use the additional compatible model IDs; this change was verified with offline requests, without a new paid generation.
+**Version 0.1.3** accepts all 10 model IDs in the public Suno generation contract. The existing generation tool, same-task lookup, native help/admin commands and configuration remain unchanged. Update the plugin to use the additional compatible model IDs; this change was verified with offline requests, without a new paid generation.
 
 This independent **Suno integration is provided by Ace Data Cloud**. It is not an official plugin from the Suno publisher or the AstrBot team. Use your own Ace account and API key.
 
