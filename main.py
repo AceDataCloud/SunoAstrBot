@@ -39,7 +39,7 @@ class SunoPlugin(Star):
             prompt(string): Description of the desired music.
             instrumental(boolean): True for music without vocals.
             duration(number): Optional target seconds, 10 to 360; 0 lets Suno choose.
-            model(string): chirp-v6, chirp-v6-mini, or chirp-v6-wild.
+            model(string): chirp-v6, chirp-v6-wild, chirp-v6-mini, chirp-v5-5, chirp-v5, chirp-v4-5-plus, chirp-v4-5, chirp-v4, chirp-v3-5, chirp-v3-0.
 
         Returns:
             JSON with submission status and task ID, never a completed-audio claim.

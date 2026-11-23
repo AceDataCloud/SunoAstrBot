@@ -2,7 +2,7 @@
 
 Generate Suno music in an AstrBot conversation through your own Ace Data Cloud account. The plugin registers two agent tools: `suno_generate_music` submits one job, and `suno_get_task` retrieves that same job until it completes. A submitted job or a preview audio URL is not a finished song.
 
-**This PR targets 0.1.1** with native help/admin lookup commands, bilingual configuration and illustrated setup. Existing 0.1.0 installations do not gain these entries until the source is merged and the package is published/updated.
+**Version 0.1.2** accepts all 10 model IDs in the public Suno generation contract. The existing generation tool, same-task lookup, native help/admin commands and configuration remain unchanged. Update the plugin to use the additional compatible model IDs; this change was verified with offline requests, without a new paid generation.
 
 This independent **Suno integration is provided by Ace Data Cloud**. It is not an official plugin from the Suno publisher or the AstrBot team. Use your own Ace account and API key.
 
@@ -121,3 +121,9 @@ socket access blocked. Fake events and mocked cancellation do not establish
 a full message-dispatcher, market install, live generation, task ownership,
 new billing or signup/conversion result. Use normal `python -m pytest -q`
 for transport and command regression tests.
+
+## Model contract maintenance
+
+`suno_generate_music` accepts `chirp-v6`, `chirp-v6-wild`, `chirp-v6-mini`, `chirp-v5-5`, `chirp-v5`, `chirp-v4-5-plus`, `chirp-v4-5`, `chirp-v4`, `chirp-v3-5`, `chirp-v3-0`. The default remains `chirp-v6`. An explicit model, instrumental choice and valid duration are preserved without model substitution. An absent duration is omitted; a supplied duration remains a 10–360 second target. Other Suno actions are not added by this update.
+
+`contracts/suno-models.json` records the reviewed public contract. Maintainers can run `python scripts/sync_suno_models.py --refresh`, review the diff, then use `--check` offline to verify the runtime model list and AstrBot tool description. Refreshing never generates music.

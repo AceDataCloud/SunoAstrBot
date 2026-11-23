@@ -4,7 +4,7 @@
 
 通过自己的 Ace Data Cloud 账号，在 AstrBot 聊天中生成 Suno 音乐。插件提供 `suno_generate_music` 提交任务与 `suno_get_task` 查询同一任务两个 Agent 工具。提交成功或出现试听链接不代表歌曲已完成。
 
-**本 PR 的目标版本为 0.1.1**：新增原生帮助及管理员查询指令、双语配置和图文说明。合并和市场发布前，当前 0.1.0 安装不会自动获得这些入口。
+**0.1.2** 补齐公开 Suno 生成合同的 10 个型号；原有生成工具、同任务查询、原生帮助/管理员查询及配置方式不变。升级插件后即可使用新增兼容型号，本次只做离线请求验证，没有新收费生成。
 
 这是 **Ace Data Cloud 提供的 Suno 独立集成**，不是 Suno 厂商或 AstrBot 团队的官方插件。使用自己的 Ace 账号和 API Key；不要填写其他平台的密钥。
 
@@ -120,3 +120,9 @@ uv pip install --python .venv-host/bin/python astrbot==4.29.0
 验证管理员允许/非管理员拒绝、Key 遮罩 schema、空 Key 错误与取消传播，并阻止 socket 连接。
 事件和取消为测试替身，不能据此声称完整消息分发、官方市场安装、真实生成、任务归属、
 新账单或注册转化已验。传输和指令回归使用常规 `python -m pytest -q`。
+
+## 模型合同维护
+
+`suno_generate_music` 支持：`chirp-v6`、`chirp-v6-wild`、`chirp-v6-mini`、`chirp-v5-5`、`chirp-v5`、`chirp-v4-5-plus`、`chirp-v4-5`、`chirp-v4`、`chirp-v3-5`、`chirp-v3-0`。默认仍为 `chirp-v6`；明确指定的型号、instrumental 和合法 duration 原样保留，不降级到其他型号。未指定 duration 时不发送该字段，指定后仍为 10–360 秒目标长度。其他 Suno 动作没有加入本插件。
+
+`contracts/suno-models.json` 保存已核公开合同；运行 `python scripts/sync_suno_models.py --refresh` 可读取更新，审查差异后用 `--check` 离线核对运行时列表和 AstrBot 工具说明。刷新不会生成音乐。
