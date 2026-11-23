@@ -1,0 +1,18 @@
+{
+  "source": "https://platform.acedata.cloud/api/v1/apis/09a26295-5972-4392-9318-dcd9b218f90d/",
+  "captured_at": "2026-11-23",
+  "path": "/suno/audios",
+  "action": "generate",
+  "models": [
+    "chirp-v6",
+    "chirp-v6-wild",
+    "chirp-v6-mini",
+    "chirp-v5-5",
+    "chirp-v5",
+    "chirp-v4-5-plus",
+    "chirp-v4-5",
+    "chirp-v4",
+    "chirp-v3-5",
+    "chirp-v3-0"
+  ]
+}

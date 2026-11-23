@@ -147,3 +147,28 @@ async def test_native_task_cancellation_propagates_without_resubmission(
         _ = [x async for x in plugin.suno_ace_task(Event(), "original-task")]
     query.assert_awaited_once_with("original-task")
     submit.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_agent_tool_preserves_every_current_model(loaded, monkeypatch):
+    plugin, client, _ = loaded
+    root = Path(__file__).resolve().parents[1]
+    models = json.loads((root / "contracts/suno-models.json").read_text())["models"]
+    for model in models:
+        assert model in plugin.suno_generate_music.__doc__
+        payloads = []
+
+        def post(_self, path, payload, captured=payloads):
+            captured.append((path, payload))
+            return {"task_id": "offline-task"}
+
+        monkeypatch.setattr(client, "_post", post)
+        result = json.loads(
+            await plugin.suno_generate_music(Event(), "Offline", False, 18, model)
+        )
+        assert result["task_id"] == "offline-task"
+        assert len(payloads) == 1
+        assert payloads[0][0] == "/suno/audios"
+        assert payloads[0][1]["model"] == model
+        assert payloads[0][1]["instrumental"] is False
+        assert payloads[0][1]["duration"] == 18

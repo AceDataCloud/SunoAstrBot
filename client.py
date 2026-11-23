@@ -9,7 +9,20 @@ from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 API_BASE = "https://api.acedata.cloud"
-MODELS = {"chirp-v6", "chirp-v6-mini", "chirp-v6-wild"}
+# BEGIN GENERATED SUNO MODELS
+MODELS = {
+    "chirp-v6",
+    "chirp-v6-wild",
+    "chirp-v6-mini",
+    "chirp-v5-5",
+    "chirp-v5",
+    "chirp-v4-5-plus",
+    "chirp-v4-5",
+    "chirp-v4",
+    "chirp-v3-5",
+    "chirp-v3-0",
+}
+# END GENERATED SUNO MODELS
 COMPLETE = {"complete", "completed", "succeeded", "success", "finished"}
 FAILED = {"failed", "error", "cancelled", "canceled", "rejected"}
 
@@ -84,7 +97,7 @@ class SunoClient:
                 "Authorization": "Bearer " + self._api_key,
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "User-Agent": "AceDataCloudAstrBot/0.1.1",
+                "User-Agent": "AceDataCloudAstrBot/0.1.2",
             },
             method="POST",
         )
@@ -134,7 +147,9 @@ class SunoClient:
         if not prompt.strip():
             raise SunoError("Describe the music to generate.")
         if model not in MODELS:
-            raise SunoError("Choose chirp-v6, chirp-v6-mini, or chirp-v6-wild.")
+            raise SunoError(
+                "Choose a supported Suno model: " + ", ".join(sorted(MODELS)) + "."
+            )
         if duration and (not isinstance(duration, int) or not 10 <= duration <= 360):
             raise SunoError("Duration must be 10–360 seconds or omitted.")
         payload: dict[str, Any] = {
