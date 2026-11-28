@@ -1,9 +1,9 @@
 name: astrbot_plugin_suno_acedatacloud
-display_name: Suno by Ace Data Cloud
+display_name: Suno
 short_desc: Suno music generation and same-task audio retrieval through Ace Data Cloud.
 desc: >-
   Suno music generation and same-task audio retrieval through Ace Data Cloud. Install this Ace Data Cloud integration, configure your own API key, and use /suno_ace for setup or the administrator-only /suno_ace_task for an existing task. Not an official Suno publisher plugin.
-version: 0.1.3
+version: 0.1.4
 author: acedatacloud
 repo: https://github.com/AceDataCloud/SunoAstrBot
 astrbot_version: ">=4.28.2,<5"

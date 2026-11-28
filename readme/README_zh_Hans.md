@@ -6,21 +6,21 @@
 
 这是 **Ace Data Cloud 提供的 Suno 独立集成**，不是 Suno 厂商或 AstrBot 团队的官方插件。使用自己的 Ace 账号和 API Key；不要填写其他平台的密钥。
 
-[English guide](../README.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [当前价格](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)
+[English guide](../README.md) · [Suno API](https://platform.acedata.cloud/documents/4da95d9d-7722-4a72-857d-bf6be86036e9?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen) · [当前价格](https://platform.acedata.cloud/models?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen)
 
 ## 1. 搜索与安装
 
 当前上游文档（2026-10-18）：侧栏 **插件 → 顶部插件 → 插件市场 / 已安装**；旧 4.28.2 英文界面可能显示 Extensions。插件参数在已安装卡片齿轮里设置，**不要把服务插件 Key 填进模型提供商**。
 
-在 AstrBot WebUI 中打开 **Plugins → Plugins → Plugin Market**，搜索 **Suno**。核对卡片名称 **Suno by Ace Data Cloud**、作者 **acedatacloud** 和 Suno 服务图标，然后打开详情并点击 **Install**。回到 **Installed**，确认插件已启用且没有加载错误。
+在 AstrBot WebUI 中打开 **Plugins → Plugins → Plugin Market**，搜索 **Suno**。核对卡片名称 **Suno**、作者 **acedatacloud** 和 Suno 服务图标，然后打开详情并点击 **Install**。回到 **Installed**，确认插件已启用且没有加载错误。
 
 插件已在 [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud) 正式上架，推荐按上面的市场流程安装。也可通过 **Plugins → Plugins → Installed → Install Plugin (+) → Install from URL** 填入 `https://github.com/AceDataCloud/SunoAstrBot` 安装源码仓库；仓库安装是独立路径，不能代替市场安装验证。
 
 ## 2. 获取 Suno API Key
 
-先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)；首次没有通用应用时，先初始化 **General application**。下图取自同一 Ace 应用管理页面，不是 AstrBot 界面。
+先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen)；首次没有通用应用时，先初始化 **General application**。下图取自同一 Ace 应用管理页面，不是 AstrBot 界面。
 
-登录 [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)，打开 **General application** 复制现有 Key，或进入 **Manage Keys → Create** 创建 AstrBot 专用 Key。服务专用 Key 也可使用，但要同时允许 `/suno/audios` 与 `/suno/tasks`。生成前检查 Suno 当前价格与余额。
+登录 [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen)，打开 **General application** 复制现有 Key，或进入 **Manage Keys → Create** 创建 AstrBot 专用 Key。服务专用 Key 也可使用，但要同时允许 `/suno/audios` 与 `/suno/tasks`。生成前检查 Suno 当前价格与余额。
 
 只复制 Key 本身，不加 `Bearer `，也不要使用 `platform-...` 管理 Token。不要把 Key 写进聊天消息或仓库文件。
 
@@ -36,7 +36,7 @@
 
 ### 在 AstrBot 粘贴的位置
 
-打开 **插件 → 插件 → 已安装**，点击 **Suno by Ace Data Cloud** 卡片齿轮，把 Key 填入 **Ace Data Cloud generation API key with Suno access**（保存字段为 `api_key`）并保存。不要填 `Bearer `；也不要在聊天里输入 Key。
+打开 **插件 → 插件 → 已安装**，点击 **Suno** 卡片齿轮，把 Key 填入 **Ace Data Cloud generation API key with Suno access**（保存字段为 `api_key`）并保存。不要填 `Bearer `；也不要在聊天里输入 Key。
 
 ![AstrBot 官方历史插件配置参考，非本插件运行截图](../_assets/tutorial/astrbot-plugin-config-reference.png)
 
@@ -44,7 +44,7 @@
 
 ## 3. 配置 AstrBot
 
-在 **Plugins → Plugins → Installed** 中点击 **Suno by Ace Data Cloud** 的齿轮，将 Key 填入 **Ace Data Cloud generation API key with Suno access** 并保存。AstrBot WebUI 会遮蔽输入，但插件配置文件仍存储原值，应保护 AstrBot 数据目录。
+在 **Plugins → Plugins → Installed** 中点击 **Suno** 的齿轮，将 Key 填入 **Ace Data Cloud generation API key with Suno access** 并保存。AstrBot WebUI 会遮蔽输入，但插件配置文件仍存储原值，应保护 AstrBot 数据目录。
 
 使用 Agent 工具时，使用 Agent 工具时，选择支持工具调用的聊天模型，并在当前会话的 Profile 和 Persona 中允许 `suno_generate_music` 与 `suno_get_task`。工具未出现时查看 **Plugins → Manage Behaviors → Function Tools**。
 
