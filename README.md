@@ -18,7 +18,7 @@ The plugin is published in [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceD
 
 ## 2. Get a key with Suno access
 
-[Register or sign in to Ace](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen) first. Initialize **General application** if it does not exist. The following images show the shared Ace Applications page, not AstrBot.
+[Register or sign in to Ace](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen) first. Open **General Application**. The following images show the shared Ace Applications page, not AstrBot.
 
 Sign in to [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen). Open **General application** to copy an existing key, or choose **Manage Keys → Create** for a separate AstrBot key. A service-specific key also works when it grants both `/suno/audios` and `/suno/tasks`. Check the current Suno price and your balance before generating.
 
