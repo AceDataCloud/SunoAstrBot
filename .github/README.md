@@ -14,7 +14,7 @@ This independent **Suno integration is provided by Ace Data Cloud**. It is not a
 
 Current upstream navigation (2026-10-18): **Plugins → Plugins → Plugin Market / Installed**. The earlier tested 4.28.2 English UI may label the section Extensions. Configure this service in the installed plugin gear; **do not paste its key into model-provider settings**.
 
-In AstrBot WebUI, open **Plugins → Plugins → Plugin Market** and search **Suno**. Check the card says **Suno by Ace Data Cloud**, the author is **acedatacloud**, and the logo matches the Suno service icon. Open the details and select **Install**. Once installed, find it under **Installed** and confirm that it is enabled without a load error.
+In AstrBot WebUI, open **Plugins → Plugins → Plugin Market** and search **Suno**. Check the card says **Suno**, the author is **acedatacloud**, and the logo matches the Suno service icon. Open the details and select **Install**. Once installed, find it under **Installed** and confirm that it is enabled without a load error.
 
 The plugin is published in [AstrBot Cloud](https://cloud.astrbot.app/plugin/AceDataCloud/astrbot_plugin_suno_acedatacloud). Prefer the market installation above. **Plugins → Plugins → Installed → Install Plugin (+) → Install from URL** with `https://github.com/AceDataCloud/SunoAstrBot` is also available; a repository installation is a separate path and does not validate market installation.
 
@@ -38,7 +38,7 @@ Images reused and checked on 2026-10-18; original capture dates were not supplie
 
 ### Where to paste it in AstrBot
 
-Open **Plugins → Plugins → Installed**, select the gear on **Suno by Ace Data Cloud**, paste the key into **Ace Data Cloud generation API key with Suno access** (stored as `api_key`), and save. No `Bearer ` prefix; never paste the key in chat.
+Open **Plugins → Plugins → Installed**, select the gear on **Suno**, paste the key into **Ace Data Cloud generation API key with Suno access** (stored as `api_key`), and save. No `Bearer ` prefix; never paste the key in chat.
 
 ![AstrBot official historical plugin configuration reference, not this plugin running](../_assets/tutorial/astrbot-plugin-config-reference.png)
 
@@ -46,7 +46,7 @@ This is the official AstrBot `helloworld` configuration example, labelled v3.4.1
 
 ## 3. Configure AstrBot
 
-Under **Plugins → Plugins → Installed**, select the gear icon on **Suno by Ace Data Cloud**. Paste the key into **Ace Data Cloud generation API key with Suno access** and save. AstrBot masks the field in WebUI, but its plugin configuration file stores the original value, so protect the AstrBot data directory.
+Under **Plugins → Plugins → Installed**, select the gear icon on **Suno**. Paste the key into **Ace Data Cloud generation API key with Suno access** and save. AstrBot masks the field in WebUI, but its plugin configuration file stores the original value, so protect the AstrBot data directory.
 
 For Agent-tool use, choose an active chat model that supports tool calling. In the current conversation's profile and persona, allow `suno_generate_music` and `suno_get_task`; see **Plugins → Manage Behaviors → Function Tools** if a tool is not available.
 
